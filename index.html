@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- EDIT: page title -->
+  <title>Keepsake — cinematic memory & tribute films from your old photos</title>
+  <!-- EDIT: page description -->
+  <meta name="description" content="Send us your photos, we craft a beautiful tribute or memory film — for a funeral or wake, a milestone birthday, or simply to remember someone you love. Films from £65. Funeral directors welcome.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%23141414'/%3E%3Ccircle cx='50' cy='50' r='24' fill='%23f7f5f2'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..650;1,9..144,400..650&family=Inter+Tight:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <noscript><style>.reveal{opacity:1;translate:0 0}</style></noscript>
+</head>
+<body>
+
+  <div id="fx-cursor" aria-hidden="true"></div>
+  <div id="fx-progress" aria-hidden="true"></div>
+
+  <!-- Animated background layers (leave alone) -->
+  <div class="bg" aria-hidden="true">
+    <canvas id="fx-particles"></canvas>
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="rules"></div>
+    <div class="grain"></div>
+  </div>
+
+  <header class="nav" id="nav">
+    <!-- EDIT: brand name -->
+    <a class="nav-logo" href="#top"><span class="logo-dot"></span>Keepsake</a>
+    <nav class="nav-links">
+      <!-- EDIT: nav links -->
+      <a href="#practice">How it works</a>
+      <a href="#work">Examples</a>
+      <a href="#pricing">Our films</a>
+      <a href="#directors">Funeral directors</a>
+      <a href="#order">Start yours</a>
+    </nav>
+    <!-- EDIT: nav button -->
+    <a class="btn btn-primary nav-cta" href="#order">Start your film</a>
+    <button class="nav-burger" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span>
+    </button>
+  </header>
+
+  <main id="top">
+
+    <!-- ============ HERO ============ -->
+    <section class="hero">
+      <div class="wrap hero-inner">
+        <!-- EDIT: eyebrow line -->
+        <span class="eyebrow reveal">Memory &amp; tribute films · crafted in Aberdeen</span>
+        <!-- EDIT: main headline (keep one word inside serif-accent for the italic accent) -->
+        <h1 class="reveal">A life, gathered into one <span class="serif-accent">unforgettable</span> film</h1>
+        <!-- EDIT: hero sub-line -->
+        <p class="hero-sub reveal">Send us a handful of old photos. We turn them into a cinematic, gently narrated memory film — for a funeral or wake, a milestone birthday, or simply to hold someone close again. Ready in 48–72 hours, films from £65.</p>
+        <div class="hero-ctas reveal">
+          <!-- EDIT: hero buttons -->
+          <a class="btn btn-primary" href="#order">Start your film</a>
+          <a class="btn btn-ghost" href="#work">Watch an example</a>
+        </div>
+      </div>
+
+      <!-- Floating parallax chips (EDIT: chip text) -->
+      <div class="hero-float" aria-hidden="true">
+        <div class="float-card fc-1" data-depth="16"><div class="fc-inner">Ready in 48 hours</div></div>
+        <div class="float-card fc-2" data-depth="30"><div class="fc-inner">From £65 · one-off, no subscription</div></div>
+        <div class="float-card fc-3" data-depth="44"><div class="fc-inner">Hand-finished, never mass-produced</div></div>
+      </div>
+
+      <div class="scroll-hint"></div>
+    </section>
+
+    <!-- ============ MARQUEE ============ -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track">
+        <!-- EDIT: marquee words (one group only — the script clones it for a seamless loop) -->
+        <div class="marquee-group">
+          <span>Funerals &amp; wakes</span><i>◆</i><span>Milestone birthdays</span><i>◆</i><span>Anniversaries</span><i>◆</i><span>In memory</span><i>◆</i><span>Gifts</span><i>◆</i><span>New babies</span><i>◆</i>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ FEATURES ============ -->
+    <section class="section" id="practice">
+      <div class="wrap">
+        <header class="section-head">
+          <!-- EDIT: features eyebrow + heading + sub -->
+          <span class="eyebrow reveal">How it works</span>
+          <h2 class="reveal">Three simple steps, one <span class="serif-accent">beautiful</span> film</h2>
+          <p class="section-sub reveal">You don't need to be good with computers, and you don't need perfect photos. You send what you have — we do the rest, by hand.</p>
+        </header>
+        <div class="cards">
+          <!-- EDIT: feature cards (number, title, text) -->
+          <article class="card tilt reveal">
+            <span class="card-num">01</span>
+            <h3>Send your photos</h3>
+            <p>Up to 120 photos and little video clips — snapshots, old prints, phone pictures. Tell us who they're for and the feeling you want.</p>
+          </article>
+          <article class="card tilt reveal">
+            <span class="card-num">02</span>
+            <h3>We craft the film</h3>
+            <p>We gently restore and colour the photos, add warm narration, music and cinematic motion, and shape it into a story that flows.</p>
+          </article>
+          <article class="card tilt reveal">
+            <span class="card-num">03</span>
+            <h3>Yours in 48–72 hours</h3>
+            <p>A polished three-to-five-minute film arrives ready to play at a service, share with family, or keep forever. One free tweak included.</p>
+          </article>
+          <article class="card tilt reveal">
+            <span class="card-num">04</span>
+            <h3>Tenderly made</h3>
+            <p>Never a template churned out by a machine. Every film is finished by a real person who treats it like their own family's.</p>
+          </article>
+          <article class="card tilt reveal">
+            <span class="card-num">05</span>
+            <h3>Ready for the day</h3>
+            <p>Delivered in the right format for a funeral screen, a phone, or social media — with a downloadable copy that's yours to keep.</p>
+          </article>
+          <article class="card tilt reveal">
+            <span class="card-num">06</span>
+            <h3>Handled with care</h3>
+            <p>Your photos stay private, are never shared, and are deleted after delivery unless you'd like us to keep them for a future film.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ STATS ============ -->
+    <section class="section stats" id="studio">
+      <div class="wrap stats-grid">
+        <!-- EDIT: stats (data-count = number, data-suffix = text after it) -->
+        <div class="stat reveal">
+          <span class="stat-num" data-count="48" data-suffix="h">48h</span>
+          <span class="stat-label">Standard turnaround</span>
+        </div>
+        <div class="stat reveal">
+          <span class="stat-num" data-count="20">20</span>
+          <span class="stat-label">Film styles to choose from</span>
+        </div>
+        <div class="stat reveal">
+          <span class="stat-num" data-count="120">120</span>
+          <span class="stat-label">Photos &amp; clips in one story</span>
+        </div>
+        <div class="stat reveal">
+          <span class="stat-num" data-count="1">1</span>
+          <span class="stat-label">Free revision, always</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SHOWCASE ============ -->
+    <section class="section" id="work">
+      <div class="wrap">
+        <header class="section-head">
+          <!-- EDIT: showcase heading -->
+          <span class="eyebrow reveal">Examples</span>
+          <h2 class="reveal">Films that <span class="serif-accent">stay</span> with a family</h2>
+        </header>
+
+        <div class="show-row reveal">
+          <div class="show-visual tilt" aria-hidden="true">
+            <!-- EDIT: showcase art 1 (glyph initials + caption) -->
+            <div class="art art-poster">
+              <span class="art-glyph">▶</span>
+              <div class="art-circle"></div>
+              <div class="art-lines"><i></i><i></i><i></i></div>
+              <span class="art-caption">"A Life Well Lived" — Margaret, 1938–2026</span>
+            </div>
+          </div>
+          <div class="show-copy">
+            <!-- EDIT: showcase item 1 -->
+            <h3>For a funeral or wake</h3>
+            <p>Thirty photographs across eighty-odd years, gently restored and set to soft narration and music — a film the whole family watched together before the service, and again long after.</p>
+            <span class="show-tag">Tribute · 4 minutes · Delivered in 48h</span>
+          </div>
+        </div>
+
+        <div class="show-row show-row-flip reveal">
+          <div class="show-visual tilt" aria-hidden="true">
+            <div class="art art-shelf-wrap">
+              <div class="art-shelf">
+                <i></i><i></i><i></i><i></i><i></i><i></i>
+              </div>
+              <!-- EDIT: showcase art 2 caption -->
+              <span class="art-caption">"Dad at 60" — a surprise for the party</span>
+            </div>
+          </div>
+          <div class="show-copy">
+            <!-- EDIT: showcase item 2 -->
+            <h3>For a milestone birthday</h3>
+            <p>A joyful, funny run through six decades — school photos to grandkids — played on the big screen at his 60th. Not a dry eye, and it's been shared round the family ever since.</p>
+            <span class="show-tag">Celebration · 3 minutes · Music &amp; narration</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PRICING ============ -->
+    <section class="section" id="pricing">
+      <div class="wrap">
+        <header class="section-head">
+          <span class="eyebrow reveal">Our films</span>
+          <h2 class="reveal">Three films, quoted <span class="serif-accent">personally</span></h2>
+          <p class="section-sub reveal">No price-list pressure at the hardest of times. Tell us what you need and we'll reply within a few hours with a personal quote — most films start from £65, and one free revision is always included.</p>
+        </header>
+        <div class="cards">
+          <article class="card price-card reveal">
+            <span class="price-name">Standard Tribute</span>
+            <p class="price-note">The dignified classic.</p>
+            <ul class="price-list">
+              <li>Up to 120 photos &amp; clips — a few short videos welcome</li>
+              <li>A choice of ten classic film styles</li>
+              <li>Elegant opening title — their name &amp; dates</li>
+              <li>Licensed music, or their song for the service copy</li>
+              <li>Ready in 48–72 hours</li>
+            </ul>
+            <a class="btn btn-ghost" href="#order">Enquire</a>
+          </article>
+          <article class="card price-card price-featured reveal">
+            <span class="price-badge">Most chosen</span>
+            <span class="price-name">Premium Tribute</span>
+            <p class="price-note">Photos &amp; home video, woven together.</p>
+            <ul class="price-list">
+              <li>Up to 120 photos &amp; clips — video woven throughout</li>
+              <li>All twenty film styles, incl. premium motion designs</li>
+              <li>Told in life chapters — childhood to later years</li>
+              <li>Key clips keep their real voice &amp; laughter</li>
+              <li>Two rounds of changes included</li>
+            </ul>
+            <a class="btn btn-primary" href="#order">Enquire</a>
+          </article>
+          <article class="card price-card reveal">
+            <span class="price-name">Bespoke Memory Film</span>
+            <p class="price-note">A keepsake film, fully custom.</p>
+            <ul class="price-list">
+              <li>Fully custom design around the person</li>
+              <li>Every photo AI-enhanced — upscaled &amp; sharpened</li>
+              <li>Optional narrated life story</li>
+              <li>Unlimited photos &amp; clips within the film</li>
+              <li>Priority production</li>
+            </ul>
+            <a class="btn btn-ghost" href="#order">Enquire</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FUNERAL DIRECTORS ============ -->
+    <section class="section" id="directors">
+      <div class="wrap">
+        <header class="section-head">
+          <span class="eyebrow reveal">For funeral directors</span>
+          <h2 class="reveal">Tribute films, presented as <span class="serif-accent">yours</span></h2>
+          <p class="section-sub reveal">A white-label service for funeral directors: we make the film, you present it under your own name. Your arranger simply forwards our upload link to the family — a finished, crematorium-ready film comes back before the service. No software, no editing, no staff time.</p>
+        </header>
+        <div class="cards">
+          <article class="card tilt reveal">
+            <span class="card-num">01</span>
+            <h3>Done for you, sold as yours</h3>
+            <p>We stay invisible. The family deals with you, the film carries your presentation, and you set the price they pay — with a healthy margin on every funeral.</p>
+          </article>
+          <article class="card tilt reveal">
+            <span class="card-num">02</span>
+            <h3>Before the service, or it's free</h3>
+            <p>Guaranteed delivery ahead of the service date, in the exact format your crematorium or venue needs — prepared for Obitus and Wesley Media screens, with free re-edits inside the timeline.</p>
+          </article>
+          <article class="card tilt reveal">
+            <span class="card-num">03</span>
+            <h3>The first one is on us</h3>
+            <p>Give us your next family who would love a tribute film and we'll make it free of charge. Judge us on that, then request the trade price list.</p>
+          </article>
+        </div>
+        <div class="hero-ctas reveal" style="justify-content:center; margin-top:28px;">
+          <a class="btn btn-primary" href="mailto:bluedoorclips@gmail.com?subject=Trade%20price%20list%20request&amp;body=Hello%2C%0A%0APlease%20send%20over%20the%20Keepsake%20trade%20price%20list.%0A%0AFuneral%20home%3A%20%0AName%3A%20%0APhone%3A%20">Request the trade price list</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ ORDER ============ -->
+    <section class="section" id="order">
+      <div class="wrap">
+        <div class="cta-band reveal">
+          <h2>Start your <span class="serif-accent">film</span></h2>
+          <p>Tell us a little about it below and we'll reply within a few hours with where to send your photos and how to pay. Or message us on <a class="inline-link" href="https://www.tiktok.com/" target="_blank" rel="noopener">TikTok</a> — whatever's easier.</p>
+          <form id="orderForm" class="order-form">
+            <div class="of-row">
+              <label>Your name<input type="text" name="name" required placeholder="Jane Cameron"></label>
+              <label>Email<input type="email" name="email" required placeholder="jane@example.com"></label>
+            </div>
+            <div class="of-row">
+              <label>Occasion
+                <select name="occasion">
+                  <option>A funeral or wake</option>
+                  <option>In memory of someone</option>
+                  <option>A milestone birthday</option>
+                  <option>An anniversary</option>
+                  <option>A gift</option>
+                  <option>Something else</option>
+                </select>
+              </label>
+              <label>Film
+                <select name="package">
+                  <option>Standard Tribute</option>
+                  <option>Premium Tribute</option>
+                  <option>Bespoke Memory Film</option>
+                  <option>Not sure yet — please advise</option>
+                </select>
+              </label>
+            </div>
+            <label>Anything you'd like us to know<textarea name="notes" rows="3" placeholder="Who it's for, roughly how many photos you have, and any date you need it by."></textarea></label>
+            <button type="submit" class="btn btn-accent btn-lg">Send &amp; get started</button>
+            <p class="of-fine">We reply personally, usually within a few hours. Your details are never shared.</p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="wrap footer-grid">
+      <!-- EDIT: footer brand + line -->
+      <div>
+        <a class="nav-logo" href="#top"><span class="logo-dot"></span>Keepsake</a>
+        <p class="footer-line">Cinematic memory &amp; tribute films, hand-made in Aberdeen.</p>
+      </div>
+      <nav class="footer-links">
+        <!-- EDIT: footer links -->
+        <a href="#practice">How it works</a>
+        <a href="#work">Examples</a>
+        <a href="#pricing">Our films</a>
+        <a href="#directors">Funeral directors</a>
+        <a href="#order">Start yours</a>
+      </nav>
+    </div>
+    <div class="wrap footer-base">
+      <!-- EDIT: copyright name -->
+      <span>© <span id="year">2026</span> Keepsake Films. Made with care.</span>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script>
+    // Order form -> opens a pre-filled email to the studio. Change ORDER_EMAIL to your inbox.
+    var ORDER_EMAIL = 'bluedoorclips@gmail.com';
+    var f = document.getElementById('orderForm');
+    if (f) f.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var d = new FormData(f);
+      var body =
+        'New Keepsake order\n\n' +
+        'Name: ' + (d.get('name') || '') + '\n' +
+        'Email: ' + (d.get('email') || '') + '\n' +
+        'Occasion: ' + (d.get('occasion') || '') + '\n' +
+        'Package: ' + (d.get('package') || '') + '\n\n' +
+        'Notes:\n' + (d.get('notes') || '');
+      window.location.href = 'mailto:' + ORDER_EMAIL +
+        '?subject=' + encodeURIComponent('Keepsake film — ' + (d.get('name') || 'new enquiry')) +
+        '&body=' + encodeURIComponent(body);
+      var btn = f.querySelector('button[type=submit]');
+      if (btn) btn.textContent = 'Opening your email…';
+    });
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script>
+  // Soft drifting particle field — warm dust motes behind the page
+  (() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    if (typeof THREE === 'undefined') return;
+    const canvas = document.getElementById('fx-particles');
+    if (!canvas) return;
+    const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(60, 1, 0.1, 100);
+    camera.position.z = 6;
+    const N = 500;
+    const pos = new Float32Array(N * 3);
+    for (let i = 0; i < N * 3; i++) pos[i] = (Math.random() - 0.5) * 14;
+    const geo = new THREE.BufferGeometry();
+    geo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+    const accent = getComputedStyle(document.documentElement)
+      .getPropertyValue('--accent-2').trim() || '#b98a4e';
+    const mat = new THREE.PointsMaterial({
+      color: new THREE.Color(accent), size: 0.03, transparent: true, opacity: 0.35
+    });
+    const pts = new THREE.Points(geo, mat);
+    scene.add(pts);
+    let mx = 0, my = 0;
+    window.addEventListener('mousemove', e => {
+      mx = e.clientX / window.innerWidth - 0.5;
+      my = e.clientY / window.innerHeight - 0.5;
+    }, { passive: true });
+    const resize = () => {
+      renderer.setSize(window.innerWidth, window.innerHeight, false);
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+    };
+    window.addEventListener('resize', resize);
+    resize();
+    const tick = t => {
+      pts.rotation.y = t * 0.00004 + mx * 0.3;
+      pts.rotation.x = my * 0.3;
+      renderer.render(scene, camera);
+      requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  })();
+  // Cursor glow (desktop only)
+  (() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    if (window.matchMedia('(pointer: coarse)').matches) return;
+    const glow = document.getElementById('fx-cursor');
+    if (!glow) return;
+    let tx = -400, ty = -400, x = -400, y = -400, on = false;
+    window.addEventListener('mousemove', e => {
+      tx = e.clientX; ty = e.clientY;
+      glow.style.opacity = '1';
+      if (!on) { on = true; move(); }
+    }, { passive: true });
+    const move = () => {
+      x += (tx - x) * 0.12; y += (ty - y) * 0.12;
+      glow.style.left = x + 'px'; glow.style.top = y + 'px';
+      requestAnimationFrame(move);
+    };
+  })();
+  // Magnetic buttons (desktop only)
+  (() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    if (window.matchMedia('(pointer: coarse)').matches) return;
+    document.querySelectorAll('.btn').forEach(btn => {
+      btn.addEventListener('mousemove', e => {
+        const r = btn.getBoundingClientRect();
+        const dx = e.clientX - (r.left + r.width / 2);
+        const dy = e.clientY - (r.top + r.height / 2);
+        btn.style.translate = `${dx * 0.18}px ${dy * 0.3}px`;
+      });
+      btn.addEventListener('mouseleave', () => { btn.style.translate = '0px 0px'; });
+    });
+  })();
+  // Scroll progress bar
+  (() => {
+    const bar = document.getElementById('fx-progress');
+    if (!bar) return;
+    const update = () => {
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      bar.style.width = (max > 0 ? (window.scrollY / max) * 100 : 0) + '%';
+    };
+    window.addEventListener('scroll', update, { passive: true });
+    update();
+  })();
+  </script>
+</body>
+</html>
