@@ -4,12 +4,12 @@
    when re-theming. Everything else derives from it.
    ========================================================= */
 :root{
-  --bg:#f6f1ea;                       /* EDIT: page background (warm ivory) */
-  --accent-1:#8a5a3b;                 /* EDIT: main accent colour (warm walnut) */
-  --accent-2:#b98a4e;                 /* EDIT: second accent colour (soft gold) */
-  --text:#231d18;                     /* EDIT: ink text colour */
-  --muted:#6f655c;                    /* EDIT: secondary text colour */
-  --surface:#fefcf8;                  /* EDIT: card / panel colour */
+  --bg:#eef1f5;                       /* EDIT: page background (cool porcelain) */
+  --accent-1:#24425f;                 /* EDIT: main accent colour (deep navy) */
+  --accent-2:#6e8fae;                 /* EDIT: second accent colour (slate blue) */
+  --text:#141a21;                     /* EDIT: ink text colour */
+  --muted:#5b6672;                    /* EDIT: secondary text colour */
+  --surface:#f8fafc;                  /* EDIT: card / panel colour */
   --border:#00000014;                 /* EDIT: hairline divider colour */
   --font-display:'Inter Tight',system-ui,sans-serif;  /* EDIT: heading font */
   --font-serif:'Fraunces',Georgia,serif;              /* EDIT: italic accent font */
@@ -528,7 +528,7 @@ body.menu-open .nav-burger span:nth-child(2){transform:translateY(-4px) rotate(-
 .price-list li{position:relative;padding-left:1.4rem;font-size:.97rem;color:var(--text)}
 .price-list li::before{content:"";position:absolute;left:0;top:.55em;width:.5rem;height:.5rem;border-radius:50%;background:var(--accent-2)}
 .price-card .btn{margin-top:auto;width:100%}
-.price-featured{background:linear-gradient(180deg,#fffdf9,#f7efe2);border:1px solid #8a5a3b33;box-shadow:0 24px 60px -30px #8a5a3b55}
+.price-featured{background:linear-gradient(180deg,#fafcfe,#e8eef5);border:1px solid #24425f33;box-shadow:0 24px 60px -30px #24425f55}
 .price-badge{align-self:flex-start;font-family:var(--font-display);font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.14em;color:var(--on-accent);background:var(--accent-1);padding:.3rem .7rem;border-radius:999px;margin-bottom:.2rem}
 
 /* ---------- Order form ---------- */
@@ -541,7 +541,7 @@ body.menu-open .nav-burger span:nth-child(2){transform:translateY(-4px) rotate(-
   padding:.8rem .9rem;width:100%;transition:border-color .2s,box-shadow .2s;
 }
 .order-form input:focus,.order-form select:focus,.order-form textarea:focus{
-  outline:none;border-color:var(--accent-1);box-shadow:0 0 0 3px #8a5a3b22;
+  outline:none;border-color:var(--accent-1);box-shadow:0 0 0 3px #24425f22;
 }
 .order-form textarea{resize:vertical;min-height:90px}
 .order-form .btn{margin-top:.2rem}
@@ -561,6 +561,8 @@ body.menu-open .nav-burger span:nth-child(2){transform:translateY(-4px) rotate(-
 
 /* ---------- Premium effects ---------- */
 #fx-particles{position:absolute;inset:0;width:100%;height:100%}
+.show-visual--video{padding:0}
+.example-video{width:100%;height:100%;object-fit:cover;display:block;border-radius:inherit}
 #fx-cursor{
   position:fixed;left:0;top:0;z-index:99;pointer-events:none;
   width:340px;height:340px;border-radius:50%;
