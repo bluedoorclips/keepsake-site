@@ -14,6 +14,24 @@ const path = require('path');
 const root = path.resolve(process.argv[2] || '.');
 const port = process.env.PORT || process.argv[3] || 3000;
 
+/* Tribute films + registry live on the family-portal service (private volume
+   + Postgres) — never in this public repo. Local tributes.json is a fallback
+   for offline dev only. */
+const PORTAL = process.env.PORTAL_URL || 'https://web-production-626a4.up.railway.app';
+
+async function lookupTribute(token) {
+  try {
+    const r = await fetch(`${PORTAL}/api/tributes/${token}`, { signal: AbortSignal.timeout(4000) });
+    if (r.ok) {
+      const j = await r.json();
+      return { name: j.name, dates: j.dates, message: j.message, mediaUrl: `${PORTAL}${j.media}` };
+    }
+  } catch { /* portal unreachable — fall through to local registry */ }
+  const local = loadTributes()[token];
+  if (local) return { ...local, mediaUrl: null };
+  return null;
+}
+
 const types = {
   '.html': 'text/html; charset=utf-8',
   '.css': 'text/css; charset=utf-8',
@@ -46,7 +64,7 @@ function esc(s) {
   return String(s || '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 }
 
-function tributePage(t, token) {
+function tributePage(t, token, mediaUrl) {
   return `<!doctype html>
 <html lang="en-GB">
 <head>
@@ -68,7 +86,7 @@ function tributePage(t, token) {
      font-size:clamp(34px,7vw,54px);line-height:1.1;margin-top:14px}
   .dates{margin-top:10px;color:var(--muted);font-size:17px;letter-spacing:.06em}
   .film{margin-top:34px;border-radius:16px;overflow:hidden;box-shadow:0 18px 60px rgba(20,26,33,.18);background:#000}
-  video{display:block;width:100%;height:auto}
+  video{display:block;max-width:100%;max-height:82vh;width:auto;height:auto;margin:0 auto}
   .message{margin-top:26px;font-family:'Fraunces',Georgia,serif;font-style:italic;font-size:19px;
            color:var(--muted);line-height:1.6;max-width:560px;margin-left:auto;margin-right:auto}
   footer{margin-top:44px;font-size:13px;color:var(--muted)}
@@ -83,7 +101,7 @@ function tributePage(t, token) {
   ${t.dates ? `<p class="dates">${esc(t.dates)}</p>` : ''}
   <div class="film">
     <video controls playsinline preload="metadata"${t.poster ? ` poster="/v/${token}/poster"` : ''}>
-      <source src="/v/${token}/stream" type="video/mp4">
+      <source src="${esc(mediaUrl || `/v/${token}/stream`)}" type="video/mp4">
       Your browser cannot play this film — try opening the link in Safari or Chrome.
     </video>
   </div>
@@ -124,7 +142,7 @@ function streamVideo(req, res, filePath) {
   fs.createReadStream(filePath).pipe(res);
 }
 
-http.createServer((req, res) => {
+http.createServer(async (req, res) => {
   let urlPath;
   try {
     urlPath = decodeURIComponent(req.url.split('?')[0]);
@@ -140,12 +158,18 @@ http.createServer((req, res) => {
   }
   const vMatch = /^\/v\/([A-Za-z0-9]{8,64})(\/stream|\/poster)?$/.exec(urlPath);
   if (vMatch) {
-    const tribute = loadTributes()[vMatch[1]];
+    const tribute = await lookupTribute(vMatch[1]);
     if (!tribute) {
       res.writeHead(404, { 'Content-Type': 'text/plain' });
       return res.end('Not found');
     }
-    if (vMatch[2] === '/stream') return streamVideo(req, res, path.join(root, tribute.video));
+    if (vMatch[2] === '/stream') {
+      if (tribute.mediaUrl) {
+        res.writeHead(302, { Location: tribute.mediaUrl });
+        return res.end();
+      }
+      return streamVideo(req, res, path.join(root, tribute.video));
+    }
     if (vMatch[2] === '/poster') {
       const p = tribute.poster ? path.join(root, tribute.poster) : null;
       if (!p || !fs.existsSync(p)) {
@@ -160,7 +184,7 @@ http.createServer((req, res) => {
       'X-Robots-Tag': 'noindex, nofollow',
       'Cache-Control': 'no-store',
     });
-    return res.end(tributePage(tribute, vMatch[1]));
+    return res.end(tributePage(tribute, vMatch[1], tribute.mediaUrl));
   }
   // ── End hidden tribute section ──────────────────────────────────
 
