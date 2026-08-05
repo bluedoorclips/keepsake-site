@@ -211,8 +211,13 @@ http.createServer(async (req, res) => {
     res.writeHead(404, { 'Content-Type': 'text/plain' });
     return res.end('Not found');
   }
+  const ext = path.extname(filePath).toLowerCase();
+  if (ext === '.mp4' || ext === '.webm') {
+    // Range support so phones (especially iPhones) can play and seek
+    return streamVideo(req, res, filePath);
+  }
   res.writeHead(200, {
-    'Content-Type': types[path.extname(filePath).toLowerCase()] || 'application/octet-stream',
+    'Content-Type': types[ext] || 'application/octet-stream',
   });
   fs.createReadStream(filePath).pipe(res);
 }).listen(port, () => {
