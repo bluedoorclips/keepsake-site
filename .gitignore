@@ -3,3 +3,4 @@ tributes.json
 qr-codes/
 private/
 .admin-token
+data-local/
