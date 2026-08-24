@@ -314,8 +314,7 @@ body.menu-open .nav-burger span:nth-child(2){transform:translateY(-4px) rotate(-
 /* ---------- Cards (soft-lift 3D tilt) ---------- */
 .cards{
   display:grid;gap:1.2rem;
-  /* two across, not four - roomier cards */
-  grid-template-columns:repeat(2,1fr);
+  grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));
 }
 .card{
   position:relative;overflow:hidden;
