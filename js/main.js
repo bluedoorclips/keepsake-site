@@ -145,3 +145,89 @@
   const year = document.getElementById('year');
   if (year) year.textContent = new Date().getFullYear();
 })();
+
+
+/* ---------- "Why are you here?" chooser ---------- */
+/* One panel open at a time: with five stacked panels, letting them all open
+   turns the page back into the long scroll this was meant to replace. */
+(function () {
+  var items = Array.prototype.slice.call(document.querySelectorAll('.choose'));
+  if (!items.length) return;
+
+  function close(item) {
+    var body = item.querySelector('.choose-body');
+    if (body && item.classList.contains('is-open')) {
+      // From its real current height, otherwise 'auto' -> 0 does not animate.
+      // Force the layout to flush so the transition has a real start value.
+      // requestAnimationFrame would do it too, but only if frames are being
+      // produced - in a background or non-compositing tab the callback never
+      // runs and the panel would be left stuck open at its inline height.
+      body.style.height = body.scrollHeight + 'px';
+      void body.offsetHeight;
+      body.style.height = '0px';
+    }
+    item.classList.remove('is-open');
+    var btn = item.querySelector('.choose-head');
+    if (btn) btn.setAttribute('aria-expanded', 'false');
+    var v = item.querySelector('.choose-video');
+    if (v) { try { v.pause(); v.currentTime = 0; } catch (e) {} }
+    var m = item.querySelector('.choose-media');
+    if (m) m.classList.remove('is-playing');
+  }
+
+  items.forEach(function (item) {
+    var btn = item.querySelector('.choose-head');
+    if (!btn) return;
+    btn.addEventListener('click', function () {
+      var wasOpen = item.classList.contains('is-open');
+      items.forEach(close);
+      if (wasOpen) return;
+      item.classList.add('is-open');
+      btn.setAttribute('aria-expanded', 'true');
+      var body = item.querySelector('.choose-body');
+      var inner = item.querySelector('.choose-inner');
+      if (body && inner) {
+        body.style.height = inner.scrollHeight + 'px';
+        // Settle to auto once open so the panel keeps fitting its content if
+        // the video changes the layout after it loads.
+        var done = function (e) {
+          if (e.propertyName !== 'height') return;
+          body.removeEventListener('transitionend', done);
+          if (item.classList.contains('is-open')) body.style.height = 'auto';
+        };
+        body.addEventListener('transitionend', done);
+      }
+      // preload=none keeps five videos off the initial page weight; the file
+      // is only fetched once a panel is actually opened.
+      var v = item.querySelector('.choose-video');
+      if (v) { v.preload = 'auto'; v.play().then(function () {
+        var m = item.querySelector('.choose-media');
+        if (m) m.classList.add('is-playing');
+      }).catch(function () {}); }
+    });
+  });
+
+  // Tapping the video itself toggles sound — muted autoplay is the only way it
+  // starts, but a tribute film is half music, so make that one tap away.
+  items.forEach(function (item) {
+    var media = item.querySelector('.choose-media');
+    var v = item.querySelector('.choose-video');
+    if (!media || !v) return;
+    v.muted = true;
+    media.addEventListener('click', function () {
+      v.muted = !v.muted;
+      if (v.paused) v.play().catch(function () {});
+      media.classList.add('is-playing');
+    });
+  });
+
+  // A deep link like /#ch-wedding should arrive with that panel already open.
+  if (location.hash) {
+    var target = document.querySelector('.choose-body' + location.hash);
+    if (target) {
+      var host = target.closest('.choose');
+      var hb = host && host.querySelector('.choose-head');
+      if (hb) setTimeout(function () { hb.click(); host.scrollIntoView({ behavior: 'smooth', block: 'center' }); }, 300);
+    }
+  }
+})();
