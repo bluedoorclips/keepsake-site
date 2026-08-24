@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..650;1,9..144,400..650&family=Inter+Tight:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=hero4">
+  <link rel="stylesheet" href="css/style.css?v=hero5">
   <noscript><style>.reveal{opacity:1;translate:0 0}</style></noscript>
 </head>
 <body>
@@ -205,8 +205,22 @@
           <h2 class="reveal">Old photographs, <span class="serif-accent">brought back to life</span></h2>
           <p class="section-sub reveal">Faded prints, phone screenshots, pictures sent round on WhatsApp until they are barely there. We restore and enlarge them so they hold up on a big screen — and so the family can print them afterwards.</p>
         </header>
-        <!-- DROP-IN: real before/after pair. Add assets/restore-before.jpg and
-             assets/restore-after.jpg, then replace this block with the two <figure>s. -->
+        <div class="ba reveal" id="ba" title="Drag to compare">
+          <img class="ba-after" src="/assets/restore-after.jpg" alt="The same photograph after restoration - sharp, clean and print-ready" width="896" height="1200">
+          <div class="ba-before"><img src="/assets/restore-before.jpg" alt="A creased, faded original photograph" width="896" height="1200"></div>
+          <div class="ba-line" aria-hidden="true"></div>
+          <span class="ba-tag ba-tag-b" aria-hidden="true">Before</span>
+          <span class="ba-tag ba-tag-a" aria-hidden="true">After</span>
+          <input class="ba-range" type="range" min="0" max="100" value="50" aria-label="Drag to compare the original and restored photograph">
+        </div>
+        <script>
+        (function(){
+          var ba=document.getElementById('ba'); if(!ba) return;
+          var before=ba.querySelector('.ba-before'), line=ba.querySelector('.ba-line'), r=ba.querySelector('.ba-range');
+          function set(v){ before.style.clipPath='inset(0 '+(100-v)+'% 0 0)'; line.style.left=v+'%'; }
+          r.addEventListener('input',function(){ set(this.value); }); set(50);
+        })();
+        </script>
         <div class="cards">
           <article class="card reveal">
             <span class="card-num">01</span>
