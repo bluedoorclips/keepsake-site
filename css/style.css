@@ -763,3 +763,8 @@ body.menu-open .nav-burger span:nth-child(2){transform:translateY(-4px) rotate(-
 @media (min-width:760px){
   .choose-cols--wide{grid-template-columns:1fr minmax(280px,400px)}
 }
+
+/* Website pricing pair - separated from the feature bullets by a hairline so
+   the two ways to pay read as alternatives, not two more features. */
+.choose-prices{margin-top:.9rem;padding-top:.9rem;border-top:1px solid var(--border)}
+.choose-prices li::before{background:var(--accent-1)}
