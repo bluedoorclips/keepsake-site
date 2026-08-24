@@ -4,3 +4,5 @@ qr-codes/
 private/
 .admin-token
 data-local/
+*.bak-*
+.claude/

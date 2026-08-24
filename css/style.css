@@ -190,6 +190,17 @@ body.menu-open .nav-burger span:nth-child(2){transform:translateY(-4px) rotate(-
 .hero-inner{
   display:grid;justify-items:start;gap:2rem;
   width:100%;
+  /* two columns: copy left, intro video right */
+  grid-template-columns:1.1fr .9fr;
+  align-items:center;
+}
+.hero-copy{display:grid;gap:2rem;justify-items:start}
+.hero-video{width:100%}
+.hero-video video{
+  display:block;width:100%;height:auto;
+  border-radius:18px;
+  box-shadow:0 24px 70px rgba(20,26,33,.28);
+  background:#000;
 }
 .hero-inner h1{max-width:12ch}
 .hero-sub{
@@ -199,7 +210,7 @@ body.menu-open .nav-burger span:nth-child(2){transform:translateY(-4px) rotate(-
 }
 .hero-ctas{display:flex;gap:1rem;flex-wrap:wrap}
 
-.hero-float{position:absolute;inset:0;pointer-events:none}
+.hero-float{position:absolute;inset:0;pointer-events:none;display:none}  /* chips retired - the intro video sits there now */
 .float-card{position:absolute}
 .fc-1{top:21%;right:9%}
 .fc-2{top:47%;right:4%}
@@ -513,6 +524,8 @@ body.menu-open .nav-burger span:nth-child(2){transform:translateY(-4px) rotate(-
 }
 @media (max-width:480px){
   .hero{padding-top:6.5rem}
+  .hero-inner{grid-template-columns:1fr}
+  .hero-video{order:2}
   .hero-ctas .btn{width:100%}
   .scroll-hint{display:none}
   .stat{padding-left:1.1rem}
