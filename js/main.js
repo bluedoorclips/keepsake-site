@@ -169,10 +169,11 @@
     item.classList.remove('is-open');
     var btn = item.querySelector('.choose-head');
     if (btn) btn.setAttribute('aria-expanded', 'false');
-    var v = item.querySelector('.choose-video');
-    if (v) { try { v.pause(); v.currentTime = 0; } catch (e) {} }
-    var m = item.querySelector('.choose-media');
-    if (m) m.classList.remove('is-playing');
+    // All of them - the funeral panel stacks two labelled examples.
+    item.querySelectorAll('.choose-video').forEach(function (v) {
+      try { v.pause(); v.currentTime = 0; } catch (e) {}
+    });
+    item.querySelectorAll('.choose-media').forEach(function (m) { m.classList.remove('is-playing'); });
   }
 
   items.forEach(function (item) {
@@ -199,25 +200,28 @@
       }
       // preload=none keeps five videos off the initial page weight; the file
       // is only fetched once a panel is actually opened.
-      var v = item.querySelector('.choose-video');
-      if (v) { v.preload = 'auto'; v.play().then(function () {
-        var m = item.querySelector('.choose-media');
-        if (m) m.classList.add('is-playing');
-      }).catch(function () {}); }
+      item.querySelectorAll('.choose-video').forEach(function (v) {
+        v.preload = 'auto';
+        v.play().then(function () {
+          var m = v.closest('.choose-media');
+          if (m) m.classList.add('is-playing');
+        }).catch(function () {});
+      });
     });
   });
 
   // Tapping the video itself toggles sound — muted autoplay is the only way it
   // starts, but a tribute film is half music, so make that one tap away.
   items.forEach(function (item) {
-    var media = item.querySelector('.choose-media');
-    var v = item.querySelector('.choose-video');
-    if (!media || !v) return;
-    v.muted = true;
-    media.addEventListener('click', function () {
-      v.muted = !v.muted;
-      if (v.paused) v.play().catch(function () {});
-      media.classList.add('is-playing');
+    item.querySelectorAll('.choose-media').forEach(function (media) {
+      var v = media.querySelector('.choose-video');
+      if (!v) return;
+      v.muted = true;
+      media.addEventListener('click', function () {
+        v.muted = !v.muted;
+        if (v.paused) v.play().catch(function () {});
+        media.classList.add('is-playing');
+      });
     });
   });
 

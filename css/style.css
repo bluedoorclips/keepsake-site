@@ -768,3 +768,11 @@ body.menu-open .nav-burger span:nth-child(2){transform:translateY(-4px) rotate(-
    the two ways to pay read as alternatives, not two more features. */
 .choose-prices{margin-top:.9rem;padding-top:.9rem;border-top:1px solid var(--border)}
 .choose-prices li::before{background:var(--accent-1)}
+
+/* Two labelled examples stacked in the funeral panel's media column. */
+.choose-mediastack{display:flex;flex-direction:column;gap:.45rem}
+.choose-mediastack .choose-media + .choose-media-h{margin-top:.6rem}
+.choose-media-h{
+  font-size:.72rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;
+  color:var(--muted);
+}
