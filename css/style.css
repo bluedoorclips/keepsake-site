@@ -199,6 +199,10 @@ body.menu-open .nav-burger span:nth-child(2){transform:translateY(-4px) rotate(-
   font-size:clamp(2.2rem,4.5vw,3.6rem);letter-spacing:-0.02em;
   color:var(--accent-1);text-align:right;white-space:nowrap;
 }
+/* before/after restoration slider - sits beside the cards, not below */
+.restore-row{display:grid;grid-template-columns:1.05fr .95fr;gap:3rem;align-items:center;margin-top:38px}
+.restore-cards{display:grid;grid-template-columns:1fr;gap:1.2rem}
+.restore-row .ba{margin:0;justify-self:end}
 /* before/after restoration slider */
 .ba{position:relative;max-width:440px;margin:38px auto 0;border-radius:var(--radius);overflow:hidden;
   box-shadow:0 24px 60px -24px #24425f66;border:1px solid var(--border);cursor:ew-resize}
@@ -310,7 +314,8 @@ body.menu-open .nav-burger span:nth-child(2){transform:translateY(-4px) rotate(-
 /* ---------- Cards (soft-lift 3D tilt) ---------- */
 .cards{
   display:grid;gap:1.2rem;
-  grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));
+  /* two across, not four - roomier cards */
+  grid-template-columns:repeat(2,1fr);
 }
 .card{
   position:relative;overflow:hidden;
@@ -552,6 +557,8 @@ body.menu-open .nav-burger span:nth-child(2){transform:translateY(-4px) rotate(-
   body.menu-open .nav-links{opacity:1;pointer-events:auto;translate:0 0}
 }
 @media (max-width:820px){
+  .restore-row{grid-template-columns:1fr}
+  .restore-row .ba{order:-1;justify-self:center;max-width:380px}
   .theme-pics{grid-template-columns:1fr}
   .head-price{text-align:left}
   .hero-row{grid-template-columns:1fr}
@@ -594,7 +601,7 @@ body.menu-open .nav-burger span:nth-child(2){transform:translateY(-4px) rotate(-
 .order-form .btn{margin-top:.2rem}
 .of-fine{font-size:.82rem;color:var(--muted);text-align:center;font-weight:400}
 .inline-link{color:var(--accent-1);border-bottom:1px solid var(--accent-2);font-weight:600}
-@media (max-width:640px){ .of-row{grid-template-columns:1fr} }
+@media (max-width:640px){ .of-row{grid-template-columns:1fr} .cards{grid-template-columns:1fr} }
 
 /* ---------- Reduced motion ---------- */
 @media (prefers-reduced-motion: reduce){
