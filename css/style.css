@@ -746,3 +746,13 @@ body.menu-open .nav-burger span:nth-child(2){transform:translateY(-4px) rotate(-
   .choose-body{transition:none}
   .choose-x::before,.choose-x::after{transition:none}
 }
+
+/* Bullet list with the mini restore slider sat beside it (funeral chooser). */
+.choose-listrow{display:flex;gap:1.5rem;align-items:flex-start;margin-top:1.1rem}
+.choose-listrow .choose-list{margin-top:0;flex:1 1 auto}
+.ba-mini{max-width:150px;flex:0 0 150px;margin:0;box-shadow:0 10px 26px -18px rgba(0,0,0,.45)}
+.ba-mini .ba-line::after{font-size:.7rem;width:1.6rem;height:1.6rem;line-height:1.6rem}
+@media (max-width:520px){
+  .choose-listrow{flex-direction:column}
+  .ba-mini{flex-basis:auto;max-width:200px}
+}

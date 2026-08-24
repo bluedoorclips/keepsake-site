@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..650;1,9..144,400..650&family=Inter+Tight:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=choose3">
+  <link rel="stylesheet" href="css/style.css?v=choose4">
   <noscript><style>.reveal{opacity:1;translate:0 0}</style></noscript>
 </head>
 <body>
@@ -108,12 +108,23 @@
               <div class="choose-inner">
                 <div class="choose-cols">
                   <div class="choose-copy">
-                    <p>Send the photographs, however many there are and whatever state they're in. We build the film, set it to the music you choose, and send it back ready to play at the service, at the wake, and to keep afterwards.</p>
-                    <ul class="choose-list">
-                      <li><strong>Slideshow</strong> from £35</li>
-                      <li><strong>Full film</strong> from £60</li>
-                      <li><strong>Themed opening</strong> +£10</li>
-                    </ul>
+                    <p>Send the photographs, however many there are and whatever state they're in. We build the film, and send it back ready to play at the service, or at a gathering or wake, and yours to keep afterwards.</p>
+                    <div class="choose-listrow">
+                      <ul class="choose-list">
+                        <li><strong>Slideshow</strong> from £35</li>
+                        <li><strong>Full film</strong> from £60</li>
+                        <li><strong>Photo Restoration</strong></li>
+                      </ul>
+                      <!-- Small live before/after so "Photo Restoration" shows
+                           rather than tells - same images and drag behaviour as
+                           the full slider further down the page. -->
+                      <div class="ba ba-mini" title="Drag to compare">
+                        <img class="ba-after" src="/assets/restore-after.jpg" alt="Restored photograph" width="896" height="1200">
+                        <div class="ba-before"><img src="/assets/restore-before.jpg" alt="Original damaged photograph" width="896" height="1200"></div>
+                        <div class="ba-line" aria-hidden="true"></div>
+                        <input class="ba-range" type="range" min="0" max="100" value="50" aria-label="Drag to compare the original and restored photograph">
+                      </div>
+                    </div>
                     <p class="choose-note">Turned round in 24 hours when a date is close. Funeral directors, ask about trade pricing.</p>
                     <div class="choose-cta">
                       <a class="btn btn-primary" href="#order">Start a tribute</a>
@@ -333,10 +344,14 @@
         </div>
         <script>
         (function(){
-          var ba=document.getElementById('ba'); if(!ba) return;
-          var before=ba.querySelector('.ba-before'), line=ba.querySelector('.ba-line'), r=ba.querySelector('.ba-range');
-          function set(v){ before.style.clipPath='inset(0 '+(100-v)+'% 0 0)'; line.style.left=v+'%'; }
-          r.addEventListener('input',function(){ set(this.value); }); set(50);
+          // Every before/after on the page, not just the big one - the funeral
+          // chooser carries a mini copy of the same slider.
+          document.querySelectorAll('.ba').forEach(function(ba){
+            var before=ba.querySelector('.ba-before'), line=ba.querySelector('.ba-line'), r=ba.querySelector('.ba-range');
+            if(!before||!line||!r) return;
+            function set(v){ before.style.clipPath='inset(0 '+(100-v)+'% 0 0)'; line.style.left=v+'%'; }
+            r.addEventListener('input',function(){ set(this.value); }); set(50);
+          });
         })();
         </script>
       </div>
